@@ -35,15 +35,7 @@ const CharList = (props) => {
 
   const onCharsLoaded = (newChars) => {
 		const ended = newChars.length < 9 ;
-    // this.setState(({chars, offset}) => {
-		// 	return {
-		// 		chars: [...chars, ...newChars],
-		// 		loading: false,
-		// 		newItemsloading: false,
-		// 		offset: offset + 9,
-		// 		charEnded: ended
-		// 	}
-		// });
+
 		setChars(chars => [...chars, ...newChars]);
 		setLoading(false);
 		setNewItemsloading(false);
@@ -58,14 +50,7 @@ const CharList = (props) => {
   const onError = () => {
 		setError(true)
 		setLoading(false)
-    // this.setState({
-    //   error: true,
-    //   loading: false,
-    // });
   };
-
-
-
 
 	const itemRefs = useRef([]);
 
@@ -109,7 +94,6 @@ const CharList = (props) => {
     return <ul className="char__grid">{listItems}</ul>;
   };
 
-	// const { chars, loading, error,newItemsloading, offset, charEnded } = this.state;
 	const errorMessage = error ? <ErrorMessage /> : null;
 	const load = loading ? <Spinner /> : null;
 	const content = !(loading || error) ? renderItems(chars) : null;
